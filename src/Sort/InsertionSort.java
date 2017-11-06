@@ -9,9 +9,7 @@ public class InsertionSort {
 
         Vector<int[]> result = new Vector<>();
         int massive[] = new int[inMassive.length + 1];
-        for (int i = 0; i < inMassive.length; i++) {
-            massive[i + 1] = inMassive[i];
-        }
+        System.arraycopy(inMassive, 0, massive, 1, inMassive.length);
         result.add(Arrays.copyOfRange(massive, 1, massive.length));    // Запоминание промежуточного результата
 
         int i = 2;
@@ -41,9 +39,7 @@ public class InsertionSort {
         result[2] = System.nanoTime();
 
         int massive[] = new int[inMassive.length + 1];
-        for (int i = 0; i < inMassive.length; i++) {
-            massive[i + 1] = inMassive[i];
-        }
+        System.arraycopy(inMassive, 0, massive, 1, inMassive.length);
 
         int i = 2;
         int j;

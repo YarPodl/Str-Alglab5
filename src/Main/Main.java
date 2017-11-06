@@ -112,7 +112,7 @@ public class Main {
 
     }
 
-    static void fill( Vector<int[]> data, JTable out){
+    private static void fill(Vector<int[]> data, JTable out){
         out.setModel(new DefaultTableModel(data.size() + 1, data.get(0).length + 1));
 
 
