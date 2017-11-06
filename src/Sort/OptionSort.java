@@ -29,4 +29,37 @@ public class OptionSort implements Sort {
         }
         return result;
     }
+
+
+
+
+
+    public long[] setEfficiencyOfSorting(int[] massive) {
+
+        long result[] = new long[3];
+        result[2] = System.nanoTime();
+
+        int j = massive.length - 1; // Количество сортируемых в данном проходе
+        while (j > 0) {
+            int M = massive[0];         // Максимальный элемент
+            int k = 0;                  // Индекс максимального
+            int i = 1;
+            while (i <= j) {
+                result[0]++;
+                if (M < massive[i]) {
+                    M = massive[i];
+                    k = i;
+                }
+                i++;
+            }
+            result[1]++;
+            int tmp = massive[j];  // Согласно алгоритму: i !!!!!!!!!!!!
+            massive[j] = massive[k];
+            massive[k] = tmp;
+            j--;
+        }
+
+        result[2] = System.nanoTime() - result[2];
+        return result;
+    }
 }
