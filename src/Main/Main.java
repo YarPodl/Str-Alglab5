@@ -1,6 +1,5 @@
 package Main;
 
-import Sort.Sort;
 import Sort.BubbleSort;
 import Sort.OptionSort;
 import Sort.InsertionSort;
@@ -26,19 +25,35 @@ public class Main {
         });
 
         myForm.button2.addActionListener(e -> {
-            fill(start(new OptionSort(), 10, 100), myForm.table2);
+            int massive[] = new int[10];
+            for (int i = 0; i < massive.length; i++) {
+                massive[i] = random.nextInt(100);
+            }
+            fill(OptionSort.sorting(massive), myForm.table2);
         });
 
         myForm.button3.addActionListener(e -> {
-            fill(start(new InsertionSort(), 10, 100), myForm.table3);
+            int massive[] = new int[10];
+            for (int i = 0; i < massive.length; i++) {
+                massive[i] = random.nextInt(100);
+            }
+            fill(InsertionSort.sorting(massive), myForm.table3);
         });
 
         myForm.button4.addActionListener(e -> {
-            fill(start(new InsertionSort(), 20, 100), myForm.table4);
+            int massive[] = new int[10];
+            for (int i = 0; i < massive.length; i++) {
+                massive[i] = random.nextInt(100);
+            }
+            fill(BubbleSort.sorting(massive), myForm.table4);
         });
 
         myForm.button5.addActionListener(e -> {
-            Vector<int[]> data = start(new LinearSorting(), 10, 10);
+            int massive[] = new int[10];
+            for (int i = 0; i < massive.length; i++) {
+                massive[i] = random.nextInt(10);
+            }
+            Vector<int[]> data = LinearSorting.sorting(massive);
             myForm.table5.setModel(new DefaultTableModel(4, data.get(0).length + 1));
             for (int i = 1; i < data.get(0).length + 1; i++) {
                 myForm.table5.getModel().setValueAt("№ " + Integer.toString(i - 1), 0, i);
@@ -55,7 +70,10 @@ public class Main {
 
 
         myForm.button6.addActionListener(e -> {
-            Vector<int[]> data = start(new LinearSorting(), 10, 10);
+
+
+
+
             myForm.table6.setModel(new DefaultTableModel(6, 4));
 
             myForm.table6.getModel().setValueAt("Количество сравнений", 0, 1);
@@ -68,7 +86,25 @@ public class Main {
             myForm.table6.getModel().setValueAt("Сортировка Шелла", 4, 0);
             myForm.table6.getModel().setValueAt("Линейная сортировка", 5, 0);
 
-            int result = (new BubbleSort()).setEfficiencyOfSorting()
+
+
+            int count = 1000;
+
+            int massive[] = new int[count];
+            for (int i = 0; i < massive.length; i++) {
+                massive[i] = random.nextInt(count);
+            }
+            long data[][] = new long[5][];
+            data[0] = BubbleSort.setEfficiencyOfSorting(massive.clone());
+            data[1] = OptionSort.setEfficiencyOfSorting(massive.clone());
+            data[2] = InsertionSort.setEfficiencyOfSorting(massive.clone());
+            data[3] = //BubbleSort.setEfficiencyOfSorting(massive.clone());
+            data[4] = LinearSorting.setEfficiencyOfSorting(massive.clone());
+            for (int i = 1; i < data.length + 1; i++) {
+                for (int j = 1; j < data[0].length + 1; j++) {
+                    myForm.table6.getModel().setValueAt(Long.toString(data[i - 1][j - 1]), i, j);
+                }
+            }
         });
 
 
@@ -90,19 +126,4 @@ public class Main {
             }
         }
     }
-
-
-    static Vector<int[]> start(Sort method, int count, int max){
-
-
-        int massive[] = new int[count];
-        for (int i = 0; i < massive.length; i++) {
-            massive[i] = random.nextInt(max);
-        }
-
-        return method.sorting(massive);
-
-    }
-
-
 }

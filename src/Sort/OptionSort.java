@@ -2,8 +2,8 @@ package Sort;
 
 import java.util.Vector;
 
-public class OptionSort implements Sort {
-    public Vector<int[]> sorting(int[] massive) {
+public class OptionSort {
+    public static Vector<int[]> sorting(int[] massive) {
 
 
         Vector<int[]> result = new Vector<>();
@@ -34,7 +34,7 @@ public class OptionSort implements Sort {
 
 
 
-    public long[] setEfficiencyOfSorting(int[] massive) {
+    public static long[] setEfficiencyOfSorting(int[] massive) {
 
         long result[] = new long[3];
         result[2] = System.nanoTime();

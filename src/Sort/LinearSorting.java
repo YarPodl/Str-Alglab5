@@ -3,8 +3,8 @@ package Sort;
 import java.util.Arrays;
 import java.util.Vector;
 
-public class LinearSorting implements Sort {
-    public Vector<int[]> sorting(int[] massive) {
+public class LinearSorting {
+    public static Vector<int[]> sorting(int[] massive) {
 
 
         Vector<int[]> result = new Vector<>();
@@ -40,7 +40,7 @@ public class LinearSorting implements Sort {
 
 
 
-    public long[] setEfficiencyOfSorting(int[] massive) {
+    public static long[] setEfficiencyOfSorting(int[] massive) {
 
         long result[] = new long[3];
         result[2] = System.nanoTime();
@@ -51,6 +51,7 @@ public class LinearSorting implements Sort {
         while (i < massive.length){
             b[massive[i]]++;
             i++;
+            result[1]++;
         }
         i = 0;          // индекс элемента в massive
         int j = 0;      // индекс массива b
@@ -60,7 +61,6 @@ public class LinearSorting implements Sort {
                 i++;                    // следующее поле массива
                 b[j]--;                 // осталось на одно меньше чисел j
                 result[0]++;
-                result[1]++;
             }
             j++;        // смотрим следующее число
         }

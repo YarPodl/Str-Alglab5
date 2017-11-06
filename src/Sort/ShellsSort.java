@@ -2,8 +2,8 @@ package Sort;
 
 import java.util.Vector;
 
-public class ShellsSort implements Sort {       // Ошибка в алгоритме: вместо него - метод вставки
-    public Vector<int[]> sorting(int[] massive) {
+public class ShellsSort{       // Ошибка в алгоритме: вместо него - метод вставки
+    public static Vector<int[]> sorting(int[] massive) {
 
 
         Vector<int[]> result = new Vector<>();
@@ -17,7 +17,7 @@ public class ShellsSort implements Sort {       // Ошибка в алгори�
 
 
 
-    public long[] setEfficiencyOfSorting(int[] massive) {
+    public static long[] setEfficiencyOfSorting(int[] massive) {
 
         long result[] = new long[3];
         result[2] = System.nanoTime();

@@ -3,8 +3,8 @@ package Sort;
 import java.util.Arrays;
 import java.util.Vector;
 
-public class InsertionSort implements Sort {
-    public Vector<int[]> sorting(int[] inMassive) {
+public class InsertionSort {
+    public static Vector<int[]> sorting(int[] inMassive) {
 
 
         Vector<int[]> result = new Vector<>();
@@ -34,9 +34,10 @@ public class InsertionSort implements Sort {
 
 
 
-    public long[] setEfficiencyOfSorting(int[] inMassive) {
+    public static long[] setEfficiencyOfSorting(int[] inMassive) {
 
         long result[] = new long[3];
+        //Arrays.fill(result, 0);
         result[2] = System.nanoTime();
 
         int massive[] = new int[inMassive.length + 1];
@@ -50,9 +51,9 @@ public class InsertionSort implements Sort {
             massive[0] = massive[i];
             j = i - 1;
             while (massive[0] < massive[j]) {
+                result[0]++;
                 massive[j + 1] = massive[j];
                 j--;
-                result[0]++;
             }
             massive[j + 1] = massive[0];
             i++;
