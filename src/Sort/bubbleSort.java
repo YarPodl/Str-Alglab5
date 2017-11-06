@@ -1,26 +1,49 @@
 package Sort;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class bubbleSort implements Sort {
-    public ArrayList<int[]> sorting(int[] massive){
+    public Vector<int[]> sorting(int[] massive){
 
 
-        ArrayList<int[]> result = new ArrayList<>();
-        result.add(massive);    // Запоминание промежуточного результата
+        Vector<int[]> result = new Vector<>();
+
+        result.add(massive.clone());    // Запоминание промежуточного результата
+
         boolean t = true;       // Признак отсортированности
-        for (int j = massive.length - 1; t ; j--) {
+        for (int j = massive.length - 2; t ; j--) {
             t = false;
             for (int i = 0; i <= j; i++) {
                 if (massive[i] > massive[i + 1]) {
                     t = true;
-                    int tmp = massive[j];
-                    massive[j] = massive[j + 1];
-                    massive[j + 1] = tmp;
-                    result.add(massive);  // Запоминание промежуточного результата
+                    int tmp = massive[i];
+                    massive[i] = massive[i + 1];
+                    massive[i + 1] = tmp;
+
                 }
             }
+            result.add(massive.clone());  // Запоминание промежуточного результата
         }
+        /*
+        boolean t = true;       // Признак отсортированности
+        int j = massive.length - 2;
+        while (t){
+            t = false;
+            int i = 0;
+            while (i <= j){
+                if (massive[i] > massive[i + 1]){
+                    t = true;
+                    int tmp = massive[i];
+                    massive[i] = massive[i + 1];
+                    massive[i + 1] = tmp;
+                    result.add(massive.clone());  // Запоминание промежуточного результата
+                }
+                i++;
+            }
+            j--;
+        }
+        */
         return result;
     }
 }

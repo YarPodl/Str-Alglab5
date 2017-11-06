@@ -1,7 +1,8 @@
 package Sort;
 
 import java.util.ArrayList;
+import java.util.Vector;
 
 public interface Sort {
-    ArrayList<int[]> sorting(int[] massive);
+    Vector<int[]> sorting(int[] massive);
 }

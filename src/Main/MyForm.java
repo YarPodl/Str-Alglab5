@@ -1,4 +1,5 @@
-/*package Main;
+package Main;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,12 +7,21 @@ import java.awt.*;
 public class MyForm extends JFrame {
 
     public JTabbedPane tabbedPane;
-    public JPanel table1 = new JPanel();
-    public JPanel table2 = new JPanel();
-    public JPanel table3 = new JPanel();
-    public JPanel table4 = new JPanel();
-    public JPanel table5 = new JPanel();
-    public JPanel table6 = new JPanel();
+
+    public JPanel panel1 = new JPanel();
+    public JPanel panel2 = new JPanel();
+    public JPanel panel3 = new JPanel();
+    public JPanel panel4 = new JPanel();
+    public JPanel panel5 = new JPanel();
+    public JPanel panel6 = new JPanel();
+
+
+    public JTable table1 = new JTable();
+    public JTable table2 = new JTable();
+    public JTable table3 = new JTable();
+    public JTable table4 = new JTable();
+    public JTable table5 = new JTable();
+    public JTable table6 = new JTable();
 
     public JButton button1 = new JButton("Продемонстрировать");
     public JButton button2 = new JButton("Продемонстрировать");
@@ -34,26 +44,67 @@ public class MyForm extends JFrame {
         setLayout(new BorderLayout());
 
 
+        /*
+        Vector<Vector<Integer>> tableData = new Vector<>();
+        tableData.add(new Vector<>());
+        tableData.get(0).add(11);
+        tableData.get(0).add(12);
+        tableData.get(0).add(13);
+        tableData.get(0).add(14);
+
+        tableData.add(new Vector<>());
+        tableData.get(1).add(21);
+        tableData.get(1).add(22);
+        tableData.get(1).add(23);
+        tableData.get(1).add(24);*/
+
+
+
+
+
+
+
+
+
+        panel1.setLayout(new BorderLayout());
+        panel1.add(button1, BorderLayout.NORTH);
+        panel1.add(new JScrollPane(table1));
+
+        panel2.setLayout(new BorderLayout());
+        panel2.add(button2, BorderLayout.NORTH);
+        panel2.add(table2);
+
+        panel3.setLayout(new BorderLayout());
+        panel3.add(button3, BorderLayout.NORTH);
+        panel3.add(table3);
+
+        panel4.setLayout(new BorderLayout());
+        panel4.add(button4, BorderLayout.NORTH);
+        panel4.add(table4);
+
+        panel5.setLayout(new BorderLayout());
+        panel5.add(button5, BorderLayout.NORTH);
+        panel5.add(table5);
+
+        panel6.setLayout(new BorderLayout());
+        panel6.add(button6, BorderLayout.NORTH);
+        panel6.add(table6);
+
 
         tabbedPane = new JTabbedPane();
-        tabbedPane.addTab("Прямой обмен", table1);
-        tabbedPane.addTab("Прямой выбор", table2);
-        tabbedPane.addTab("Прямое включение", table3);
-        tabbedPane.addTab("Сортировка Шелла", table4);
-        tabbedPane.addTab("Линейная сортировка", table5);
-        tabbedPane.addTab("Характеристика", table6);
-
+        tabbedPane.addTab("Прямой обмен", panel1);
+        tabbedPane.addTab("Прямой выбор", panel2);
+        tabbedPane.addTab("Прямое включение", panel3);
+        tabbedPane.addTab("Сортировка Шелла", panel4);
+        tabbedPane.addTab("Линейная сортировка", panel5);
+        tabbedPane.addTab("Характеристика", panel6);
         add(tabbedPane);
-        button1.setMinimumSize(new Dimension(40,10));
-        add(button1, BoxLayout.Y_AXIS);
-
-
         revalidate();
     }
 }
-*/
 
 
+/*
 package Main;
 
 import javax.swing.*;
@@ -114,3 +165,4 @@ public class MyForm extends JFrame {
 }
 
 
+*/
