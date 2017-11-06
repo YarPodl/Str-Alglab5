@@ -33,7 +33,7 @@ public class MyForm extends JFrame {
     public MyForm() {
         super();
         setMinimumSize(new Dimension(300, 300));
-        setSize(800, 400);
+        setSize(800, 500);
         setVisible(true);
         setTitle("Лабораторня работа №5. Алгоритмы внутренней сортировки");
         setLocationRelativeTo(null);
@@ -61,14 +61,25 @@ public class MyForm extends JFrame {
 
 
 
-
-
+        Font font = new Font("Arial", 0, 16);
+        table1.setFont(font);
+        table1.setRowHeight(25);
+        table2.setFont(font);
+        table2.setRowHeight(25);
+        table3.setFont(font);
+        table3.setRowHeight(25);
+        table4.setFont(font);
+        table4.setRowHeight(25);
+        table5.setFont(font);
+        table5.setRowHeight(25);
+        table6.setFont(font);
+        table6.setRowHeight(25);
 
 
 
         panel1.setLayout(new BorderLayout());
         panel1.add(button1, BorderLayout.NORTH);
-        panel1.add(new JScrollPane(table1));
+        panel1.add(table1);
 
         panel2.setLayout(new BorderLayout());
         panel2.add(button2, BorderLayout.NORTH);
