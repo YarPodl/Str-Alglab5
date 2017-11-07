@@ -4,6 +4,7 @@ import Sort.BubbleSort;
 import Sort.OptionSort;
 import Sort.InsertionSort;
 import Sort.LinearSorting;
+import Sort.ShellsSort;
 
 import java.util.Random;
 import java.util.Vector;
@@ -12,48 +13,34 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class Main {
+
+    static MyForm myForm = new MyForm();
+    static Random random = new Random();
+
     public static void main(String[] args) {
-        MyForm myForm = new MyForm();
-        Random random = new Random();
+
 
         myForm.button1.addActionListener(e -> {
-            int massive[] = new int[10];
-            for (int i = 0; i < massive.length; i++) {
-                massive[i] = random.nextInt(100);
-            }
-            fill(BubbleSort.sorting(massive), myForm.table1);
+            fill(BubbleSort.sorting(createMassive(10,100)), myForm.table1);
         });
 
         myForm.button2.addActionListener(e -> {
-            int massive[] = new int[10];
-            for (int i = 0; i < massive.length; i++) {
-                massive[i] = random.nextInt(100);
-            }
-            fill(OptionSort.sorting(massive), myForm.table2);
+            fill(OptionSort.sorting(createMassive(10,100)), myForm.table2);
         });
 
         myForm.button3.addActionListener(e -> {
-            int massive[] = new int[10];
-            for (int i = 0; i < massive.length; i++) {
-                massive[i] = random.nextInt(100);
-            }
-            fill(InsertionSort.sorting(massive), myForm.table3);
+            fill(InsertionSort.sorting(createMassive(10,100)), myForm.table3);
         });
 
         myForm.button4.addActionListener(e -> {
-            int massive[] = new int[10];
-            for (int i = 0; i < massive.length; i++) {
-                massive[i] = random.nextInt(100);
-            }
-            fill(BubbleSort.sorting(massive), myForm.table4);
+            fill(ShellsSort.sorting(createMassive(20,100)), myForm.table4);
         });
 
         myForm.button5.addActionListener(e -> {
-            int massive[] = new int[10];
-            for (int i = 0; i < massive.length; i++) {
-                massive[i] = random.nextInt(10);
-            }
-            Vector<int[]> data = LinearSorting.sorting(massive);
+
+            Vector<int[]> data = LinearSorting.sorting(createMassive(10,10));
+
+
             myForm.table5.setModel(new DefaultTableModel(4, data.get(0).length + 1));
             for (int i = 1; i < data.get(0).length + 1; i++) {
                 myForm.table5.getModel().setValueAt("№ " + Integer.toString(i - 1), 0, i);
@@ -88,12 +75,9 @@ public class Main {
 
 
 
-            int count = 1000;
+            int count = myForm.spinnerModel.getNumber().intValue();
 
-            int massive[] = new int[count];
-            for (int i = 0; i < massive.length; i++) {
-                massive[i] = random.nextInt(count);
-            }
+            int massive[] = createMassive(count,count);
             long data[][] = new long[5][];
             data[0] = BubbleSort.setEfficiencyOfSorting(massive.clone());
             data[1] = OptionSort.setEfficiencyOfSorting(massive.clone());
@@ -110,6 +94,15 @@ public class Main {
 
 
 
+    }
+
+
+    private static int[] createMassive(int count, int max){
+        int massive[] = new int[count];
+        for (int i = 0; i < massive.length; i++) {
+            massive[i] = random.nextInt(max);
+        }
+        return massive;
     }
 
     private static void fill(Vector<int[]> data, JTable out){
