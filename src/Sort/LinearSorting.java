@@ -12,8 +12,8 @@ public class LinearSorting {
 
         int i = 0;
         int b[] = new int[massive.length + 1];      // В алгоритме ошибка!!!!!! шаг 6 недоступен
-        Arrays.fill(b, 0);
-        while (i < massive.length){
+        Arrays.fill(b, 0);          // обнуление
+        while (i < massive.length){     // заполнение массива счетчика
             b[massive[i]]++;
             i++;
         }
@@ -45,10 +45,14 @@ public class LinearSorting {
         long result[] = new long[3];
         result[2] = System.nanoTime();
 
+        // result[0] количество сравнений
+        // result[1] количество перестановок
+        // result[2] время
+
         int i = 0;
         int b[] = new int[massive.length + 1];      // В алгоритме ошибка!!!!!! шаг 6 недоступен
-        Arrays.fill(b, 0);
-        while (i < massive.length){
+        Arrays.fill(b, 0);          // обнуление
+        while (i < massive.length){     // заполнение массива счетчика
             b[massive[i]]++;
             i++;
             result[1]++;

@@ -13,8 +13,8 @@ public class OptionSort {
         while (j > 0) {
             int M = massive[0];         // Максимальный элемент
             int k = 0;                  // Индекс максимального
-            int i = 1;
-            while (i <= j) {
+            int i = 1;                  // Индекс текущего
+            while (i <= j) {            // Поиск максимального
                 if (M < massive[i]) {
                     M = massive[i];
                     k = i;
@@ -39,12 +39,16 @@ public class OptionSort {
         long result[] = new long[3];
         result[2] = System.nanoTime();
 
+        // result[0] количество сравнений
+        // result[1] количество перестановок
+        // result[2] время
+
         int j = massive.length - 1; // Количество сортируемых в данном проходе
         while (j > 0) {
             int M = massive[0];         // Максимальный элемент
             int k = 0;                  // Индекс максимального
-            int i = 1;
-            while (i <= j) {
+            int i = 1;                  // Индекс текущего
+            while (i <= j) {            // Поиск максимального
                 result[0]++;
                 if (M < massive[i]) {
                     M = massive[i];

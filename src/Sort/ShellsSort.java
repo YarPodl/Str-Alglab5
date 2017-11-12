@@ -11,20 +11,20 @@ public class ShellsSort{       // Ошибка в алгоритме: вмест
         result.add(massive.clone());    // Запоминание промежуточного результата
 
 
-        int t = (int) (Math.log(massive.length) / Math.log(2)) - 1;
+        int t = (int) (Math.log(massive.length) / Math.log(2)) - 1; // количество интервалов
         int h  = 1;
-        for(int i = 1; i < t; i++, h = 2*h + 1 );
+        for(int i = 1; i < t; i++, h = 2*h + 1 );       // поиск первого интервала
         int j;
-        while (h > 0){
-            for(int i = h; i < massive.length ;i++){
-                int temp = massive[i];
-                for (j = i; j >= h && massive[j - h] > temp; j -= h)
+        while (h > 0){                                  // пока остались интевалы
+            for(int i = h; i < massive.length ;i++){    // сортировка включением для элемеметов на расстоянии h
+                int temp = massive[i];                  // Нужен ли "барьер" ? это вместо него
+                for (j = i; j >= h && massive[j - h] > temp; j -= h)    // поиск места для вставки, приходится проверять j >= h
                 {
                     massive[j] = massive[j - h];
                 }
-                massive[j] = temp;
+                massive[j] = temp;      // вставка
             }
-            h = (h - 1) / 2;
+            h = (h - 1) / 2;                // вычисление нового интервала (может их сразу запомнить?)
             result.add(massive.clone());    // Запоминание промежуточного результата
         }
 
@@ -116,6 +116,28 @@ public class ShellsSort{       // Ошибка в алгоритме: вмест
         long result[] = new long[3];
         result[2] = System.nanoTime();
 
+        // result[0] количество сравнений
+        // result[1] количество перестановок
+        // result[2] время
+
+        int t = (int) (Math.log(massive.length) / Math.log(2)) - 1;     // количество интервалов
+        int h  = 1;
+        for(int i = 1; i < t; i++, h = 2*h + 1 );                       // поиск первого интервала
+        int j;
+        while (h > 0){                              // пока остались интевалы
+            for(int i = h; i < massive.length ;i++){    // сортировка включением для элемеметов на расстоянии h
+                int temp = massive[i];                  // Нужен ли "барьер" ? это вместо него
+                result[0]++;
+                for (j = i; j >= h && massive[j - h] > temp; j -= h) // поиск места для вставки, приходится проверять j >= h
+                {
+                    result[0]++;
+                    massive[j] = massive[j - h];
+                }
+                massive[j] = temp;      // вставка
+                result[1]++;
+            }
+            h = (h - 1) / 2;        // вычисление нового интервала (может их сразу запомнить?)
+        }
 
         result[2] = System.nanoTime() - result[2];
         return result;

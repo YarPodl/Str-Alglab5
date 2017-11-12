@@ -19,6 +19,7 @@ public class Main {
 
     public static void main(String[] args) {
 
+        // обработчики для каждой кнопки
 
         myForm.button1.addActionListener(e -> {
             fill(BubbleSort.sorting(createMassive(10,100)), myForm.table1);
@@ -82,7 +83,7 @@ public class Main {
             data[0] = BubbleSort.setEfficiencyOfSorting(massive.clone());
             data[1] = OptionSort.setEfficiencyOfSorting(massive.clone());
             data[2] = InsertionSort.setEfficiencyOfSorting(massive.clone());
-            data[3] = //BubbleSort.setEfficiencyOfSorting(massive.clone());
+            data[3] = ShellsSort.setEfficiencyOfSorting(massive.clone());
             data[4] = LinearSorting.setEfficiencyOfSorting(massive.clone());
             for (int i = 1; i < data.length + 1; i++) {
                 for (int j = 1; j < data[0].length + 1; j++) {
@@ -97,6 +98,13 @@ public class Main {
     }
 
 
+
+    /**
+     * Cоздает массив длинной count и максимальным значением max
+     * @param count Длина массива
+     * @param max Максимальное значение
+     * @return созданный массив int[]
+     */
     private static int[] createMassive(int count, int max){
         int massive[] = new int[count];
         for (int i = 0; i < massive.length; i++) {
@@ -104,6 +112,12 @@ public class Main {
         }
         return massive;
     }
+
+    /**
+     * Выводит значения в переданную таблицу
+     * @param data динамический массив Vector, содержащик все состояния массива int[]
+     * @param out  таблица, в которую выведется результат
+     */
 
     private static void fill(Vector<int[]> data, JTable out){
         out.setModel(new DefaultTableModel(data.size() + 1, data.get(0).length + 1));
